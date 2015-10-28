@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.WidthInput = new System.Windows.Forms.TextBox();
+            this.HeightInput = new System.Windows.Forms.TextBox();
+            this.IterationsInput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,7 +40,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(47, 224);
+            this.button1.Location = new System.Drawing.Point(46, 219);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(140, 23);
             this.button1.TabIndex = 0;
@@ -48,26 +48,26 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // WidthInput
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
+            this.WidthInput.Location = new System.Drawing.Point(12, 25);
+            this.WidthInput.Name = "WidthInput";
+            this.WidthInput.Size = new System.Drawing.Size(100, 20);
+            this.WidthInput.TabIndex = 1;
             // 
-            // textBox2
+            // HeightInput
             // 
-            this.textBox2.Location = new System.Drawing.Point(118, 25);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 2;
+            this.HeightInput.Location = new System.Drawing.Point(118, 25);
+            this.HeightInput.Name = "HeightInput";
+            this.HeightInput.Size = new System.Drawing.Size(100, 20);
+            this.HeightInput.TabIndex = 2;
             // 
-            // textBox3
+            // IterationsInput
             // 
-            this.textBox3.Location = new System.Drawing.Point(12, 68);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 3;
+            this.IterationsInput.Location = new System.Drawing.Point(12, 68);
+            this.IterationsInput.Name = "IterationsInput";
+            this.IterationsInput.Size = new System.Drawing.Size(100, 20);
+            this.IterationsInput.TabIndex = 3;
             // 
             // label1
             // 
@@ -99,7 +99,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(84, 127);
+            this.checkBox1.Location = new System.Drawing.Point(76, 196);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(80, 17);
             this.checkBox1.TabIndex = 7;
@@ -115,10 +115,11 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.IterationsInput);
+            this.Controls.Add(this.HeightInput);
+            this.Controls.Add(this.WidthInput);
             this.Controls.Add(this.button1);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(260, 300);
             this.MinimumSize = new System.Drawing.Size(260, 300);
             this.Name = "Form1";
@@ -131,9 +132,9 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox WidthInput;
+        private System.Windows.Forms.TextBox HeightInput;
+        private System.Windows.Forms.TextBox IterationsInput;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
