@@ -132,13 +132,13 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox WidthInput;
-        private System.Windows.Forms.TextBox HeightInput;
-        private System.Windows.Forms.TextBox IterationsInput;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBox1;
+        public System.Windows.Forms.TextBox WidthInput;
+        public System.Windows.Forms.TextBox HeightInput;
+        public System.Windows.Forms.TextBox IterationsInput;
     }
 }
 
