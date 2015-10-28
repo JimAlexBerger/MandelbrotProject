@@ -125,6 +125,7 @@
             this.MaximumSize = new System.Drawing.Size(260, 300);
             this.MinimumSize = new System.Drawing.Size(260, 300);
             this.Name = "Form1";
+            this.ShowIcon = false;
             this.Text = "Mandelbrot Renderer";
             this.ResumeLayout(false);
             this.PerformLayout();

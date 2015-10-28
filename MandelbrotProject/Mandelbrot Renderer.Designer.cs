@@ -36,6 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(720, 480);
             this.Name = "Mandelbrot_Renderer";
+            this.ShowIcon = false;
             this.Text = "Mandelbrot_Renderer";
             this.Load += new System.EventHandler(this.Mandelbrot_Renderer_Load);
             this.ResumeLayout(false);
