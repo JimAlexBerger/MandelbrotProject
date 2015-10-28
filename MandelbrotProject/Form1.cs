@@ -23,6 +23,17 @@ namespace MandelbrotProject
             Mandelbrot_Renderer form = new Mandelbrot_Renderer();
             form.Show();
             form.Size = new System.Drawing.Size(Int32.Parse(WidthInput.Text)+16, Int32.Parse(HeightInput.Text)+39);
+            
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
