@@ -19,7 +19,7 @@ namespace MandelbrotProject
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Width: " + WidthInput.Text +"Height: " + HeightInput.Text + "Iterations: " + IterationsInput.Text);
+            MessageBox.Show("Width: " + WidthInput.Text +" Height: " + HeightInput.Text + " Iterations: " + IterationsInput.Text);
         }
     }
 }
