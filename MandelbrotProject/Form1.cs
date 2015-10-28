@@ -52,17 +52,6 @@ namespace MandelbrotProject
         {
             Renderer.CreateGraphics().Clear(Color.White);
 
-            /*SolidBrush whiteBrush = new SolidBrush(Color.White);
-
-            for (int y = 0; y < Renderer.Height; y++)
-            {
-                for (int x = 0; x < Renderer.Width; x++)
-                {
-                   
-                    Renderer.CreateGraphics().FillRectangle(whiteBrush, x, y, 1, 1);
-                    
-                }
-            }*/
 
 
             double minR = System.Convert.ToDouble(MinR.Value);
