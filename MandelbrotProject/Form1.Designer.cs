@@ -54,6 +54,7 @@
             this.WidthInput.Name = "WidthInput";
             this.WidthInput.Size = new System.Drawing.Size(100, 20);
             this.WidthInput.TabIndex = 1;
+            this.WidthInput.Text = "720";
             // 
             // HeightInput
             // 
@@ -61,6 +62,7 @@
             this.HeightInput.Name = "HeightInput";
             this.HeightInput.Size = new System.Drawing.Size(100, 20);
             this.HeightInput.TabIndex = 2;
+            this.HeightInput.Text = "480";
             // 
             // IterationsInput
             // 
