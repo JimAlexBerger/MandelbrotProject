@@ -296,9 +296,8 @@
             this.ClientSize = new System.Drawing.Size(704, 441);
             this.Controls.Add(this.Renderer);
             this.Controls.Add(this.Menu);
-            this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(720, 480);
-            this.MinimumSize = new System.Drawing.Size(720, 480);
+            this.MaximumSize = new System.Drawing.Size(1920, 1080);
+            this.MinimumSize = new System.Drawing.Size(640, 360);
             this.Name = "Form1";
             this.ShowIcon = false;
             this.Text = "Mandelbrot Renderer";

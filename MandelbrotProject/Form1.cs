@@ -19,8 +19,11 @@ namespace MandelbrotProject
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            
+            Point currentPoint = new Point(10, 10);
+            for (int i = 0; i < Renderer.Height; i++)
+            {
+                Renderer.CreateGraphics().FillRectangle(new SolidBrush(Color.Violet), 0+i, 0+i, 1, 1);
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
