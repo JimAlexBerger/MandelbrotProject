@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.Render_Button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.Menu = new System.Windows.Forms.Panel();
@@ -36,28 +36,29 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.Renderer = new System.Windows.Forms.Panel();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.MaxI = new System.Windows.Forms.NumericUpDown();
+            this.Iterations = new System.Windows.Forms.NumericUpDown();
+            this.MinI = new System.Windows.Forms.NumericUpDown();
+            this.MaxR = new System.Windows.Forms.NumericUpDown();
+            this.MinR = new System.Windows.Forms.NumericUpDown();
+            this.Set_To_Default = new System.Windows.Forms.Button();
             this.Menu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxI)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Iterations)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinI)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinR)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // Render_Button
             // 
-            this.button1.Location = new System.Drawing.Point(552, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Render Mandelbrot";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Render_Button.Location = new System.Drawing.Point(552, 12);
+            this.Render_Button.Name = "Render_Button";
+            this.Render_Button.Size = new System.Drawing.Size(140, 23);
+            this.Render_Button.TabIndex = 0;
+            this.Render_Button.Text = "Render Mandelbrot";
+            this.Render_Button.UseVisualStyleBackColor = true;
+            this.Render_Button.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -81,16 +82,17 @@
             // Menu
             // 
             this.Menu.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Menu.Controls.Add(this.numericUpDown4);
-            this.Menu.Controls.Add(this.numericUpDown3);
-            this.Menu.Controls.Add(this.numericUpDown2);
-            this.Menu.Controls.Add(this.numericUpDown5);
-            this.Menu.Controls.Add(this.numericUpDown1);
+            this.Menu.Controls.Add(this.Set_To_Default);
+            this.Menu.Controls.Add(this.MinR);
+            this.Menu.Controls.Add(this.MaxR);
+            this.Menu.Controls.Add(this.MinI);
+            this.Menu.Controls.Add(this.Iterations);
+            this.Menu.Controls.Add(this.MaxI);
             this.Menu.Controls.Add(this.label2);
             this.Menu.Controls.Add(this.label5);
             this.Menu.Controls.Add(this.label4);
             this.Menu.Controls.Add(this.label3);
-            this.Menu.Controls.Add(this.button1);
+            this.Menu.Controls.Add(this.Render_Button);
             this.Menu.Controls.Add(this.label1);
             this.Menu.Dock = System.Windows.Forms.DockStyle.Top;
             this.Menu.Location = new System.Drawing.Point(0, 0);
@@ -134,140 +136,158 @@
             this.Renderer.Size = new System.Drawing.Size(704, 384);
             this.Renderer.TabIndex = 9;
             // 
-            // numericUpDown1
+            // MaxI
             // 
-            this.numericUpDown1.DecimalPlaces = 3;
-            this.numericUpDown1.Increment = new decimal(new int[] {
-            5,
+            this.MaxI.DecimalPlaces = 3;
+            this.MaxI.Increment = new decimal(new int[] {
+            25,
             0,
             0,
-            65536});
-            this.numericUpDown1.Location = new System.Drawing.Point(48, 3);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            131072});
+            this.MaxI.Location = new System.Drawing.Point(48, 3);
+            this.MaxI.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.MaxI.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             -2147483648});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(58, 20);
-            this.numericUpDown1.TabIndex = 0;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.MaxI.Name = "MaxI";
+            this.MaxI.Size = new System.Drawing.Size(58, 20);
+            this.MaxI.TabIndex = 0;
+            this.MaxI.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // numericUpDown5
+            // Iterations
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(282, 16);
-            this.numericUpDown5.Maximum = new decimal(new int[] {
+            this.Iterations.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.Iterations.Location = new System.Drawing.Point(282, 16);
+            this.Iterations.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.numericUpDown5.Minimum = new decimal(new int[] {
+            this.Iterations.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(58, 20);
-            this.numericUpDown5.TabIndex = 16;
-            this.numericUpDown5.Value = new decimal(new int[] {
+            this.Iterations.Name = "Iterations";
+            this.Iterations.Size = new System.Drawing.Size(58, 20);
+            this.Iterations.TabIndex = 16;
+            this.Iterations.Value = new decimal(new int[] {
             250,
             0,
             0,
             0});
+            this.Iterations.ValueChanged += new System.EventHandler(this.Iterations_ValueChanged);
             // 
-            // numericUpDown2
+            // MinI
             // 
-            this.numericUpDown2.DecimalPlaces = 3;
-            this.numericUpDown2.Increment = new decimal(new int[] {
-            5,
+            this.MinI.DecimalPlaces = 3;
+            this.MinI.Increment = new decimal(new int[] {
+            25,
             0,
             0,
-            65536});
-            this.numericUpDown2.Location = new System.Drawing.Point(48, 30);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            131072});
+            this.MinI.Location = new System.Drawing.Point(48, 30);
+            this.MinI.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
+            this.MinI.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             -2147483648});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(58, 20);
-            this.numericUpDown2.TabIndex = 17;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.MinI.Name = "MinI";
+            this.MinI.Size = new System.Drawing.Size(58, 20);
+            this.MinI.TabIndex = 17;
+            this.MinI.Value = new decimal(new int[] {
             1,
             0,
             0,
             -2147483648});
+            this.MinI.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
-            // numericUpDown3
+            // MaxR
             // 
-            this.numericUpDown3.DecimalPlaces = 3;
-            this.numericUpDown3.Increment = new decimal(new int[] {
-            5,
+            this.MaxR.DecimalPlaces = 3;
+            this.MaxR.Increment = new decimal(new int[] {
+            25,
             0,
             0,
-            65536});
-            this.numericUpDown3.Location = new System.Drawing.Point(153, 4);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
+            131072});
+            this.MaxR.Location = new System.Drawing.Point(153, 4);
+            this.MaxR.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown3.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(58, 20);
-            this.numericUpDown3.TabIndex = 18;
-            this.numericUpDown3.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDown4
-            // 
-            this.numericUpDown4.DecimalPlaces = 3;
-            this.numericUpDown4.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            this.numericUpDown4.Location = new System.Drawing.Point(153, 30);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown4.Minimum = new decimal(new int[] {
+            this.MaxR.Minimum = new decimal(new int[] {
             25,
             0,
             0,
             -2147418112});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.numericUpDown4.Size = new System.Drawing.Size(58, 20);
-            this.numericUpDown4.TabIndex = 19;
-            this.numericUpDown4.Value = new decimal(new int[] {
+            this.MaxR.Name = "MaxR";
+            this.MaxR.Size = new System.Drawing.Size(58, 20);
+            this.MaxR.TabIndex = 18;
+            this.MaxR.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // MinR
+            // 
+            this.MinR.DecimalPlaces = 3;
+            this.MinR.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.MinR.Location = new System.Drawing.Point(153, 30);
+            this.MinR.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.MinR.Minimum = new decimal(new int[] {
             25,
             0,
             0,
             -2147418112});
+            this.MinR.Name = "MinR";
+            this.MinR.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.MinR.Size = new System.Drawing.Size(58, 20);
+            this.MinR.TabIndex = 19;
+            this.MinR.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            -2147418112});
+            this.MinR.ValueChanged += new System.EventHandler(this.MinR_ValueChanged);
+            // 
+            // Set_To_Default
+            // 
+            this.Set_To_Default.Location = new System.Drawing.Point(406, 12);
+            this.Set_To_Default.Name = "Set_To_Default";
+            this.Set_To_Default.Size = new System.Drawing.Size(140, 23);
+            this.Set_To_Default.TabIndex = 20;
+            this.Set_To_Default.Text = "Set To Default Values";
+            this.Set_To_Default.UseVisualStyleBackColor = true;
+            this.Set_To_Default.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
@@ -284,18 +304,18 @@
             this.Text = "Mandelbrot Renderer";
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxI)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Iterations)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinI)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinR)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Render_Button;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel Menu;
@@ -303,11 +323,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel Renderer;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown Iterations;
+        private System.Windows.Forms.NumericUpDown MaxI;
+        private System.Windows.Forms.NumericUpDown MinR;
+        private System.Windows.Forms.NumericUpDown MaxR;
+        private System.Windows.Forms.NumericUpDown MinI;
+        private System.Windows.Forms.Button Set_To_Default;
     }
 }
 
