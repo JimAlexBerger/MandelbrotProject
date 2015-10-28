@@ -29,19 +29,24 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.WidthInput = new System.Windows.Forms.TextBox();
-            this.IterationsInput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.Menu = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.Renderer = new System.Windows.Forms.Panel();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.Menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -53,23 +58,6 @@
             this.button1.Text = "Render Mandelbrot";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // WidthInput
-            // 
-            this.WidthInput.Location = new System.Drawing.Point(53, 3);
-            this.WidthInput.Name = "WidthInput";
-            this.WidthInput.Size = new System.Drawing.Size(44, 20);
-            this.WidthInput.TabIndex = 1;
-            this.WidthInput.Text = "1";
-            // 
-            // IterationsInput
-            // 
-            this.IterationsInput.Location = new System.Drawing.Point(259, 16);
-            this.IterationsInput.Name = "IterationsInput";
-            this.IterationsInput.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.IterationsInput.Size = new System.Drawing.Size(100, 20);
-            this.IterationsInput.TabIndex = 3;
-            this.IterationsInput.Text = "250";
             // 
             // label1
             // 
@@ -84,7 +72,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(203, 19);
+            this.label3.Location = new System.Drawing.Point(226, 18);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 6;
@@ -93,15 +81,15 @@
             // Menu
             // 
             this.Menu.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Menu.Controls.Add(this.textBox2);
+            this.Menu.Controls.Add(this.numericUpDown4);
+            this.Menu.Controls.Add(this.numericUpDown3);
+            this.Menu.Controls.Add(this.numericUpDown2);
+            this.Menu.Controls.Add(this.numericUpDown5);
+            this.Menu.Controls.Add(this.numericUpDown1);
             this.Menu.Controls.Add(this.label2);
-            this.Menu.Controls.Add(this.textBox3);
             this.Menu.Controls.Add(this.label5);
-            this.Menu.Controls.Add(this.textBox1);
             this.Menu.Controls.Add(this.label4);
-            this.Menu.Controls.Add(this.WidthInput);
             this.Menu.Controls.Add(this.label3);
-            this.Menu.Controls.Add(this.IterationsInput);
             this.Menu.Controls.Add(this.button1);
             this.Menu.Controls.Add(this.label1);
             this.Menu.Dock = System.Windows.Forms.DockStyle.Top;
@@ -109,14 +97,6 @@
             this.Menu.Name = "Menu";
             this.Menu.Size = new System.Drawing.Size(704, 57);
             this.Menu.TabIndex = 8;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(53, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(44, 20);
-            this.textBox1.TabIndex = 7;
-            this.textBox1.Text = "-1";
             // 
             // label4
             // 
@@ -127,14 +107,6 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "MinI";
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(153, 29);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(44, 20);
-            this.textBox2.TabIndex = 11;
-            this.textBox2.Text = "-2.5";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -143,14 +115,6 @@
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 12;
             this.label2.Text = "MinR";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(153, 3);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(44, 20);
-            this.textBox3.TabIndex = 9;
-            this.textBox3.Text = "1";
             // 
             // label5
             // 
@@ -170,6 +134,141 @@
             this.Renderer.Size = new System.Drawing.Size(704, 384);
             this.Renderer.TabIndex = 9;
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.DecimalPlaces = 3;
+            this.numericUpDown1.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.numericUpDown1.Location = new System.Drawing.Point(48, 3);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(58, 20);
+            this.numericUpDown1.TabIndex = 0;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown5
+            // 
+            this.numericUpDown5.Location = new System.Drawing.Point(282, 16);
+            this.numericUpDown5.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDown5.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown5.Name = "numericUpDown5";
+            this.numericUpDown5.Size = new System.Drawing.Size(58, 20);
+            this.numericUpDown5.TabIndex = 16;
+            this.numericUpDown5.Value = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.DecimalPlaces = 3;
+            this.numericUpDown2.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.numericUpDown2.Location = new System.Drawing.Point(48, 30);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(58, 20);
+            this.numericUpDown2.TabIndex = 17;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.DecimalPlaces = 3;
+            this.numericUpDown3.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.numericUpDown3.Location = new System.Drawing.Point(153, 4);
+            this.numericUpDown3.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(58, 20);
+            this.numericUpDown3.TabIndex = 18;
+            this.numericUpDown3.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown4
+            // 
+            this.numericUpDown4.DecimalPlaces = 3;
+            this.numericUpDown4.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.numericUpDown4.Location = new System.Drawing.Point(153, 30);
+            this.numericUpDown4.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown4.Minimum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            -2147418112});
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.numericUpDown4.Size = new System.Drawing.Size(58, 20);
+            this.numericUpDown4.TabIndex = 19;
+            this.numericUpDown4.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            -2147418112});
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,6 +284,11 @@
             this.Text = "Mandelbrot Renderer";
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -194,16 +298,16 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        public System.Windows.Forms.TextBox WidthInput;
-        public System.Windows.Forms.TextBox IterationsInput;
         private System.Windows.Forms.Panel Menu;
-        public System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
-        public System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel Renderer;
+        private System.Windows.Forms.NumericUpDown numericUpDown5;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
     }
 }
 
