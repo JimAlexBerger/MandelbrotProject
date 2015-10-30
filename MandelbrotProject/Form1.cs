@@ -61,23 +61,26 @@ namespace MandelbrotProject
 
             SolidBrush MandelColor = new SolidBrush(Color.Red);
 
-            for (int y = 0; y < Renderer.Height; y++)
-            {
-                for (int x = 0; x < Renderer.Width; x++)
+            using (var graphics = Renderer.CreateGraphics())
+            { 
+                for (int y = 0; y < Renderer.Height; y++)
                 {
+                    for (int x = 0; x < Renderer.Width; x++)
+                    {
 
-                    double cr = fitInRRange(x, Renderer.Width, minR, maxR);
-                    double ci = fitInIRange(y, Renderer.Height, minI, maxI);
+                        double cr = fitInRRange(x, Renderer.Width, minR, maxR);
+                        double ci = fitInIRange(y, Renderer.Height, minI, maxI);
 
-                    int n = findMandelbrot(cr, ci, maxN);
+                        int n = findMandelbrot(cr, ci, maxN);
 
-                    double t = ((n + 0.0) / (maxN + 0.0));
+                        double t = ((n + 0.0) / (maxN + 0.0));
 
-                    MandelColor.Color = Color.FromArgb(System.Convert.ToInt32(9 * (1 - t) * t * t * t * 255), System.Convert.ToInt32(15 * (1 - t) * (1 - t) * t * t * 255), System.Convert.ToInt32(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255));
+                        MandelColor.Color = Color.FromArgb(System.Convert.ToInt32(9 * (1 - t) * t * t * t * 255), System.Convert.ToInt32(15 * (1 - t) * (1 - t) * t * t * 255), System.Convert.ToInt32(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255));
 
-                    Renderer.CreateGraphics().FillRectangle(MandelColor, x, y, 1, 1);
-                    
-                    
+                        graphics.FillRectangle(MandelColor, x, y, 1, 1);
+
+
+                    }
                 }
             }
         }
