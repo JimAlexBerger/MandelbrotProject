@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Render_Button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,6 +43,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.Renderer = new System.Windows.Forms.Panel();
+            this.Color_Box = new System.Windows.Forms.CheckBox();
+            this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MinR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxR)).BeginInit();
@@ -78,10 +81,14 @@
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Iterations";
+            this.ToolTip1.SetToolTip(this.label3, "Good strategy to try is: start with 200, and when things smooth out or craggy bla" +
+        "ck areas develop, raise it to 2000. next time it gets bad try 10000, then 30000." +
+        "");
             // 
             // Menu
             // 
             this.Menu.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Menu.Controls.Add(this.Color_Box);
             this.Menu.Controls.Add(this.Set_To_Default);
             this.Menu.Controls.Add(this.MinR);
             this.Menu.Controls.Add(this.MaxR);
@@ -218,6 +225,9 @@
             this.Iterations.Name = "Iterations";
             this.Iterations.Size = new System.Drawing.Size(58, 20);
             this.Iterations.TabIndex = 16;
+            this.ToolTip1.SetToolTip(this.Iterations, "Good strategy to try is: start with 200, and when things smooth out or craggy bla" +
+        "ck areas develop, raise it to 2000. next time it gets bad try 10000, then 30000." +
+        "");
             this.Iterations.Value = new decimal(new int[] {
             250,
             0,
@@ -289,6 +299,20 @@
             this.Renderer.Size = new System.Drawing.Size(704, 384);
             this.Renderer.TabIndex = 9;
             // 
+            // Color_Box
+            // 
+            this.Color_Box.AutoSize = true;
+            this.Color_Box.Location = new System.Drawing.Point(347, 16);
+            this.Color_Box.Name = "Color_Box";
+            this.Color_Box.Size = new System.Drawing.Size(50, 17);
+            this.Color_Box.TabIndex = 21;
+            this.Color_Box.Text = "Color";
+            this.Color_Box.UseVisualStyleBackColor = true;
+            // 
+            // ToolTip1
+            // 
+            this.ToolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -328,6 +352,8 @@
         private System.Windows.Forms.NumericUpDown MaxR;
         private System.Windows.Forms.NumericUpDown MinI;
         private System.Windows.Forms.Button Set_To_Default;
+        private System.Windows.Forms.CheckBox Color_Box;
+        private System.Windows.Forms.ToolTip ToolTip1;
     }
 }
 

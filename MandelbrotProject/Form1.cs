@@ -52,32 +52,47 @@ namespace MandelbrotProject
         {
             Renderer.CreateGraphics().Clear(Color.White);
 
-
+            //minimum x and y values in the complex number of form x+y*i
             double minR = System.Convert.ToDouble(MinR.Value);
             double maxR = System.Convert.ToDouble(MaxR.Value);
             double minI = System.Convert.ToDouble(MaxI.Value);
             double maxI = System.Convert.ToDouble(MinI.Value);
+
+            //maximum iterations before it determines if the number is inside or outside a radius of 2
+            // see http://arachnoid.com/mandelbrot_set/resources/orbit_0.3520x0.3520.png
             int maxN = System.Convert.ToInt32(Iterations.Value);
 
-            SolidBrush MandelColor = new SolidBrush(Color.Red);
+            //The Brush used to render Mandelbrot set
+            SolidBrush MandelColor = new SolidBrush(Color.Tomato);
 
+            //moving Renderer.CreateGraphics() outside the for loops
             using (var graphics = Renderer.CreateGraphics())
             { 
+                //runs on every pixel in the Renderer
                 for (int y = 0; y < Renderer.Height; y++)
                 {
                     for (int x = 0; x < Renderer.Width; x++)
                     {
 
+                        //fits the x and y value within the minR/I and MaxR/I Value
                         double cr = fitInRRange(x, Renderer.Width, minR, maxR);
                         double ci = fitInIRange(y, Renderer.Height, minI, maxI);
 
+                        //Figures out how many iterations the complex number x+y*i takes before it becomes bigger than 2
                         int n = findMandelbrot(cr, ci, maxN);
 
+                        //A value usen in color function, figures out where the N value lies withing a range of 0 and the maxN value
                         double t = ((n + 0.0) / (maxN + 0.0));
+                        
+                        //if the color box is checked it runs an function to calculate the color of the pixel, 
+                        //else it renders only the non-escaping part black and everything else white.
+                        if (Color_Box.Checked == true) MandelColor.Color = Color.FromArgb(System.Convert.ToInt32(9 * (1 - t) * t * t * t * 255), System.Convert.ToInt32(15 * (1 - t) * (1 - t) * t * t * 255), System.Convert.ToInt32(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255));
+                        else if (n == maxN) MandelColor.Color = Color.Tomato;
+                        else MandelColor.Color = Color.White;
 
-                        MandelColor.Color = Color.FromArgb(System.Convert.ToInt32(9 * (1 - t) * t * t * t * 255), System.Convert.ToInt32(15 * (1 - t) * (1 - t) * t * t * 255), System.Convert.ToInt32(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255));
 
-                        graphics.FillRectangle(MandelColor, x, y, 1, 1);
+                        //Only rendering if the color box is checked or if the mandelbrot does not escape within the maxN value
+                        if (Color_Box.Checked == true || n == maxN) graphics.FillRectangle(MandelColor, x, y, 1, 1);
 
 
                     }
@@ -97,6 +112,7 @@ namespace MandelbrotProject
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //Sets all the values to default values
             MaxI.Value = 1;
             MinI.Value = -1;
             MaxR.Value = 1;
@@ -115,6 +131,11 @@ namespace MandelbrotProject
         }
 
         private void Iterations_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
         {
 
         }
