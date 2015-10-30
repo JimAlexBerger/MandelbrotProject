@@ -14,6 +14,7 @@ namespace MandelbrotProject
     {
         double fitInRRange(int x, int width, double minR, double maxR)
         {
+            //fits the X value within the max and min for the plot
             double range = maxR - minR;
 
             return x * (range / width) + minR;
@@ -21,6 +22,7 @@ namespace MandelbrotProject
 
         double fitInIRange(int y, int width, double minI, double maxI)
         {
+            //fits the Y value within the max and min for the plot
             double range = maxI - minI;
 
             return y * (range / width) + minI; ;
@@ -28,9 +30,14 @@ namespace MandelbrotProject
 
         int findMandelbrot(double cr, double ci, int maxN)
         {
+            //calculates Zn+1 = Z^2 + c
+            //where c is the current pixel the form x + y*i
+
             int i = 0;
             double zr = 0, zi = 0;
 
+            //if the radius of the complex number is greater than 2 the number escapes
+            //returns the number of iterations it takes for the pixel to escape withing a range of maxN
             while (i < maxN && zr * zr + zi * zi < 4.0)
             {
                 double temp = zr * zr - zi * zi + cr;
