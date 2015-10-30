@@ -53,11 +53,10 @@ namespace MandelbrotProject
             Renderer.CreateGraphics().Clear(Color.White);
 
 
-
             double minR = System.Convert.ToDouble(MinR.Value);
             double maxR = System.Convert.ToDouble(MaxR.Value);
-            double minI = System.Convert.ToDouble(MinI.Value);
-            double maxI = System.Convert.ToDouble(MaxI.Value);
+            double minI = System.Convert.ToDouble(MaxI.Value);
+            double maxI = System.Convert.ToDouble(MinI.Value);
             int maxN = System.Convert.ToInt32(Iterations.Value);
 
 
@@ -76,6 +75,7 @@ namespace MandelbrotProject
                     SolidBrush MandelColor = new SolidBrush(Color.FromArgb(System.Convert.ToInt32(9 * (1 - t) * t * t * t * 255), System.Convert.ToInt32(15 * (1 - t) * (1 - t) * t * t * 255), System.Convert.ToInt32(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255)));
 
                     Renderer.CreateGraphics().FillRectangle(MandelColor, x, y, 1, 1);
+                    
                     
                 }
             }
