@@ -112,7 +112,7 @@
             // 
             // MinR
             // 
-            this.MinR.DecimalPlaces = 3;
+            this.MinR.DecimalPlaces = 12;
             this.MinR.Increment = new decimal(new int[] {
             25,
             0,
@@ -142,7 +142,7 @@
             // 
             // MaxR
             // 
-            this.MaxR.DecimalPlaces = 3;
+            this.MaxR.DecimalPlaces = 12;
             this.MaxR.Increment = new decimal(new int[] {
             25,
             0,
@@ -170,7 +170,7 @@
             // 
             // MinI
             // 
-            this.MinI.DecimalPlaces = 3;
+            this.MinI.DecimalPlaces = 12;
             this.MinI.Increment = new decimal(new int[] {
             25,
             0,
@@ -206,7 +206,7 @@
             0});
             this.Iterations.Location = new System.Drawing.Point(282, 16);
             this.Iterations.Maximum = new decimal(new int[] {
-            10000,
+            100000000,
             0,
             0,
             0});
@@ -227,7 +227,7 @@
             // 
             // MaxI
             // 
-            this.MaxI.DecimalPlaces = 3;
+            this.MaxI.DecimalPlaces = 12;
             this.MaxI.Increment = new decimal(new int[] {
             25,
             0,
