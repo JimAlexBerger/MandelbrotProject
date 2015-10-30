@@ -50,7 +50,8 @@ namespace MandelbrotProject
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Renderer.CreateGraphics().Clear(Color.White);
+            //Clears screen at the beginning of each render
+            Renderer.CreateGraphics().Clear(System.Drawing.Color.White);
 
             //minimum x and y values in the complex number of form x+y*i
             double minR = System.Convert.ToDouble(MinR.Value);
@@ -63,7 +64,7 @@ namespace MandelbrotProject
             int maxN = System.Convert.ToInt32(Iterations.Value);
 
             //The Brush used to render Mandelbrot set
-            SolidBrush MandelColor = new SolidBrush(Color.Tomato);
+            SolidBrush MandelColor = new SolidBrush(System.Drawing.Color.Tomato);
 
             //moving Renderer.CreateGraphics() outside the for loops
             using (var graphics = Renderer.CreateGraphics())
@@ -86,13 +87,12 @@ namespace MandelbrotProject
                         
                         //if the color box is checked it runs an function to calculate the color of the pixel, 
                         //else it renders only the non-escaping part black and everything else white.
-                        if (Color_Box.Checked == true) MandelColor.Color = Color.FromArgb(System.Convert.ToInt32(9 * (1 - t) * t * t * t * 255), System.Convert.ToInt32(15 * (1 - t) * (1 - t) * t * t * 255), System.Convert.ToInt32(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255));
-                        else if (n == maxN) MandelColor.Color = Color.Tomato;
-                        else MandelColor.Color = Color.White;
+                        if (Color_Box.Checked == true) MandelColor.Color = System.Drawing.Color.FromArgb(System.Convert.ToInt32(9 * (1 - t) * t * t * t * 255), System.Convert.ToInt32(15 * (1 - t) * (1 - t) * t * t * 255), System.Convert.ToInt32(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255));
+                        else if (n == maxN) MandelColor.Color = MandelColor_Dialog.Color;
+                        else MandelColor.Color = BackgroundColor_Dialog.Color;
 
-
-                        //Only rendering if the color box is checked or if the mandelbrot does not escape within the maxN value
-                        if (Color_Box.Checked == true || n == maxN) graphics.FillRectangle(MandelColor, x, y, 1, 1);
+                        //Rendering the color at the exact pixel the for loop is on
+                        graphics.FillRectangle(MandelColor, x, y, 1, 1);
 
 
                     }
@@ -118,6 +118,8 @@ namespace MandelbrotProject
             MaxR.Value = 1;
             MinR.Value = System.Convert.ToDecimal(-2.5);
             Iterations.Value = 250;
+            MandelColor_Dialog.Color = Color.Black;
+            BackgroundColor_Dialog.Color = Color.Transparent;
         }
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
@@ -138,6 +140,33 @@ namespace MandelbrotProject
         private void toolTip1_Popup(object sender, PopupEventArgs e)
         {
 
+        }
+
+        private void Color_Box_CheckedChanged(object sender, EventArgs e)
+        {
+            //shows the background and mandelbrot color boxes based on the state of the checkbox
+            if (Color_Box.Checked == true)
+            {
+                Custom_Back.Visible = false;
+                Custom_Mandelbrot.Visible = false;
+            }
+            else
+            {
+                Custom_Back.Visible = true;
+                Custom_Mandelbrot.Visible = true;
+            }
+        }
+
+        private void Custom_Back_Click(object sender, EventArgs e)
+        {
+            //shows color dialog box for the background color
+            BackgroundColor_Dialog.ShowDialog();
+        }
+
+        private void Custom_Mandelbrot_Click(object sender, EventArgs e)
+        {
+            //Shoes color dialog box for the color of the mandelbrot
+            MandelColor_Dialog.ShowDialog();
         }
     }
 }
