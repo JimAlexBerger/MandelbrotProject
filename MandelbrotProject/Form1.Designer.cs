@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.Menu = new System.Windows.Forms.Panel();
+            this.RenderColor = new System.Windows.Forms.CheckBox();
             this.Set_To_Default = new System.Windows.Forms.Button();
             this.MinR = new System.Windows.Forms.NumericUpDown();
             this.MaxR = new System.Windows.Forms.NumericUpDown();
@@ -82,6 +83,7 @@
             // Menu
             // 
             this.Menu.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Menu.Controls.Add(this.RenderColor);
             this.Menu.Controls.Add(this.Set_To_Default);
             this.Menu.Controls.Add(this.MinR);
             this.Menu.Controls.Add(this.MaxR);
@@ -97,8 +99,21 @@
             this.Menu.Dock = System.Windows.Forms.DockStyle.Top;
             this.Menu.Location = new System.Drawing.Point(0, 0);
             this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(704, 57);
+            this.Menu.Size = new System.Drawing.Size(704, 58);
             this.Menu.TabIndex = 8;
+            // 
+            // RenderColor
+            // 
+            this.RenderColor.AutoSize = true;
+            this.RenderColor.Checked = true;
+            this.RenderColor.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.RenderColor.Location = new System.Drawing.Point(346, 16);
+            this.RenderColor.Name = "RenderColor";
+            this.RenderColor.Size = new System.Drawing.Size(50, 17);
+            this.RenderColor.TabIndex = 21;
+            this.RenderColor.Text = "Color";
+            this.RenderColor.UseVisualStyleBackColor = true;
+            this.RenderColor.CheckedChanged += new System.EventHandler(this.Color_CheckedChanged);
             // 
             // Set_To_Default
             // 
@@ -284,9 +299,9 @@
             // Renderer
             // 
             this.Renderer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Renderer.Location = new System.Drawing.Point(0, 57);
+            this.Renderer.Location = new System.Drawing.Point(0, 58);
             this.Renderer.Name = "Renderer";
-            this.Renderer.Size = new System.Drawing.Size(704, 384);
+            this.Renderer.Size = new System.Drawing.Size(704, 383);
             this.Renderer.TabIndex = 9;
             // 
             // Form1
@@ -328,6 +343,7 @@
         private System.Windows.Forms.NumericUpDown MaxR;
         private System.Windows.Forms.NumericUpDown MinI;
         private System.Windows.Forms.Button Set_To_Default;
+        private System.Windows.Forms.CheckBox RenderColor;
     }
 }
 
