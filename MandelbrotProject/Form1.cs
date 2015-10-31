@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace MandelbrotProject
 {
@@ -175,5 +176,65 @@ namespace MandelbrotProject
             //Shoes color dialog box for the color of the mandelbrot
             MandelColor_Dialog.ShowDialog();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+           
+            SaveFileDialog SaveSettings = new SaveFileDialog();
+            SaveSettings.Filter = "Text File|*.txt";
+            SaveSettings.FileName = "Profile";
+            SaveSettings.Title = "Save current settings";
+            if (SaveSettings.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string filePath = SaveSettings.FileName;
+                TextWriter bw = File.CreateText(filePath);
+                bw.WriteLine(Iterations.Value);
+                bw.WriteLine(MaxI.Value);
+                bw.WriteLine(MinI.Value);
+                bw.WriteLine(MaxR.Value);
+                bw.WriteLine(MinR.Value);
+
+                bw.Flush();
+                bw.Close();
+            }
+           
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            OpenFileDialog LoadSettings = new OpenFileDialog();
+            
+            LoadSettings.Filter = "Text file|*.txt";
+            LoadSettings.Title = "Load settings";
+            if (LoadSettings.ShowDialog() == DialogResult.OK)
+
+            {
+                
+                var settingsFile = LoadSettings.FileName;
+                //StreamReader sr = new StreamReader(settingsFile);
+
+
+                string iterVal = File.ReadLines(settingsFile).Take(1).First();
+                Iterations.Value = decimal.Parse(iterVal);
+
+                string maxiVal = File.ReadLines(settingsFile).Skip(1).Take(1).First();
+                MaxI.Value = decimal.Parse(maxiVal);
+
+                string miniVal = File.ReadLines(settingsFile).Skip(2).Take(1).First();
+                MinI.Value = decimal.Parse(miniVal);
+
+                string maxrVal = File.ReadLines(settingsFile).Skip(3).Take(1).First();
+                MaxR.Value = decimal.Parse(maxrVal);
+
+                string minrVal = File.ReadLines(settingsFile).Skip(4).Take(1).First();
+                MinR.Value = decimal.Parse(minrVal);
+
+
+
+
+            }
+
+        }
+
     }
 }
