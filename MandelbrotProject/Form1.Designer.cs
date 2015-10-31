@@ -28,11 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Render_Button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.Menu = new System.Windows.Forms.Panel();
-            this.RenderColor = new System.Windows.Forms.CheckBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.Custom_Mandelbrot = new System.Windows.Forms.Button();
+            this.Custom_Back = new System.Windows.Forms.Button();
+            this.Color_Box = new System.Windows.Forms.CheckBox();
             this.Set_To_Default = new System.Windows.Forms.Button();
             this.MinR = new System.Windows.Forms.NumericUpDown();
             this.MaxR = new System.Windows.Forms.NumericUpDown();
@@ -43,6 +48,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.Renderer = new System.Windows.Forms.Panel();
+            this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.MandelColor_Dialog = new System.Windows.Forms.ColorDialog();
+            this.BackgroundColor_Dialog = new System.Windows.Forms.ColorDialog();
             this.Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MinR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxR)).BeginInit();
@@ -53,9 +61,9 @@
             // 
             // Render_Button
             // 
-            this.Render_Button.Location = new System.Drawing.Point(552, 12);
+            this.Render_Button.Location = new System.Drawing.Point(578, 5);
             this.Render_Button.Name = "Render_Button";
-            this.Render_Button.Size = new System.Drawing.Size(140, 23);
+            this.Render_Button.Size = new System.Drawing.Size(114, 23);
             this.Render_Button.TabIndex = 0;
             this.Render_Button.Text = "Render Mandelbrot";
             this.Render_Button.UseVisualStyleBackColor = true;
@@ -74,16 +82,23 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(226, 18);
+            this.label3.Location = new System.Drawing.Point(227, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Iterations";
+            this.ToolTip1.SetToolTip(this.label3, "Good strategy to try is: start with 200, and when things smooth out or craggy bla" +
+        "ck areas develop, raise it to 2000. next time it gets bad try 10000, then 30000." +
+        "");
             // 
             // Menu
             // 
             this.Menu.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Menu.Controls.Add(this.RenderColor);
+            this.Menu.Controls.Add(this.button2);
+            this.Menu.Controls.Add(this.button1);
+            this.Menu.Controls.Add(this.Custom_Mandelbrot);
+            this.Menu.Controls.Add(this.Custom_Back);
+            this.Menu.Controls.Add(this.Color_Box);
             this.Menu.Controls.Add(this.Set_To_Default);
             this.Menu.Controls.Add(this.MinR);
             this.Menu.Controls.Add(this.MaxR);
@@ -99,27 +114,69 @@
             this.Menu.Dock = System.Windows.Forms.DockStyle.Top;
             this.Menu.Location = new System.Drawing.Point(0, 0);
             this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(704, 58);
+            this.Menu.Size = new System.Drawing.Size(704, 65);
             this.Menu.TabIndex = 8;
             // 
-            // RenderColor
+            // button2
             // 
-            this.RenderColor.AutoSize = true;
-            this.RenderColor.Checked = true;
-            this.RenderColor.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.RenderColor.Location = new System.Drawing.Point(346, 16);
-            this.RenderColor.Name = "RenderColor";
-            this.RenderColor.Size = new System.Drawing.Size(50, 17);
-            this.RenderColor.TabIndex = 21;
-            this.RenderColor.Text = "Color";
-            this.RenderColor.UseVisualStyleBackColor = true;
-            this.RenderColor.CheckedChanged += new System.EventHandler(this.Color_CheckedChanged);
+            this.button2.Location = new System.Drawing.Point(578, 30);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(114, 23);
+            this.button2.TabIndex = 25;
+            this.button2.Text = "Load settings";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(440, 30);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(132, 23);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "Save settings";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // Custom_Mandelbrot
+            // 
+            this.Custom_Mandelbrot.Location = new System.Drawing.Point(318, 30);
+            this.Custom_Mandelbrot.Name = "Custom_Mandelbrot";
+            this.Custom_Mandelbrot.Size = new System.Drawing.Size(73, 23);
+            this.Custom_Mandelbrot.TabIndex = 23;
+            this.Custom_Mandelbrot.Text = "Mandelbrot";
+            this.Custom_Mandelbrot.UseVisualStyleBackColor = true;
+            this.Custom_Mandelbrot.Visible = false;
+            this.Custom_Mandelbrot.Click += new System.EventHandler(this.Custom_Mandelbrot_Click);
+            // 
+            // Custom_Back
+            // 
+            this.Custom_Back.Location = new System.Drawing.Point(230, 30);
+            this.Custom_Back.Name = "Custom_Back";
+            this.Custom_Back.Size = new System.Drawing.Size(82, 23);
+            this.Custom_Back.TabIndex = 22;
+            this.Custom_Back.Text = "Background";
+            this.Custom_Back.UseVisualStyleBackColor = true;
+            this.Custom_Back.Visible = false;
+            this.Custom_Back.Click += new System.EventHandler(this.Custom_Back_Click);
+            // 
+            // Color_Box
+            // 
+            this.Color_Box.AutoSize = true;
+            this.Color_Box.Checked = true;
+            this.Color_Box.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Color_Box.Location = new System.Drawing.Point(347, 9);
+            this.Color_Box.Name = "Color_Box";
+            this.Color_Box.Size = new System.Drawing.Size(87, 17);
+            this.Color_Box.TabIndex = 21;
+            this.Color_Box.Text = "Default Color";
+            this.Color_Box.UseVisualStyleBackColor = true;
+            this.Color_Box.CheckedChanged += new System.EventHandler(this.Color_Box_CheckedChanged);
             // 
             // Set_To_Default
             // 
-            this.Set_To_Default.Location = new System.Drawing.Point(406, 12);
+            this.Set_To_Default.Location = new System.Drawing.Point(440, 5);
             this.Set_To_Default.Name = "Set_To_Default";
-            this.Set_To_Default.Size = new System.Drawing.Size(140, 23);
+            this.Set_To_Default.Size = new System.Drawing.Size(132, 23);
             this.Set_To_Default.TabIndex = 20;
             this.Set_To_Default.Text = "Set To Default Values";
             this.Set_To_Default.UseVisualStyleBackColor = true;
@@ -219,7 +276,7 @@
             0,
             0,
             0});
-            this.Iterations.Location = new System.Drawing.Point(282, 16);
+            this.Iterations.Location = new System.Drawing.Point(283, 6);
             this.Iterations.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -233,6 +290,9 @@
             this.Iterations.Name = "Iterations";
             this.Iterations.Size = new System.Drawing.Size(58, 20);
             this.Iterations.TabIndex = 16;
+            this.ToolTip1.SetToolTip(this.Iterations, "Good strategy to try is: start with 200, and when things smooth out or craggy bla" +
+        "ck areas develop, raise it to 2000. next time it gets bad try 10000, then 30000." +
+        "");
             this.Iterations.Value = new decimal(new int[] {
             250,
             0,
@@ -299,10 +359,18 @@
             // Renderer
             // 
             this.Renderer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Renderer.Location = new System.Drawing.Point(0, 58);
+            this.Renderer.Location = new System.Drawing.Point(0, 65);
             this.Renderer.Name = "Renderer";
-            this.Renderer.Size = new System.Drawing.Size(704, 383);
+            this.Renderer.Size = new System.Drawing.Size(704, 376);
             this.Renderer.TabIndex = 9;
+            // 
+            // ToolTip1
+            // 
+            this.ToolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
+            // 
+            // BackgroundColor_Dialog
+            // 
+            this.BackgroundColor_Dialog.Color = System.Drawing.Color.Transparent;
             // 
             // Form1
             // 
@@ -343,7 +411,14 @@
         private System.Windows.Forms.NumericUpDown MaxR;
         private System.Windows.Forms.NumericUpDown MinI;
         private System.Windows.Forms.Button Set_To_Default;
-        private System.Windows.Forms.CheckBox RenderColor;
+        private System.Windows.Forms.CheckBox Color_Box;
+        private System.Windows.Forms.ToolTip ToolTip1;
+        private System.Windows.Forms.Button Custom_Mandelbrot;
+        private System.Windows.Forms.Button Custom_Back;
+        private System.Windows.Forms.ColorDialog MandelColor_Dialog;
+        private System.Windows.Forms.ColorDialog BackgroundColor_Dialog;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
