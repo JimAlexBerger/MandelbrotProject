@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Render_Button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,17 +52,24 @@
             this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.MandelColor_Dialog = new System.Windows.Forms.ColorDialog();
             this.BackgroundColor_Dialog = new System.Windows.Forms.ColorDialog();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.Toolstrip_File = new System.Windows.Forms.ToolStripDropDownButton();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveParametersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MinR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Iterations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxI)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Render_Button
             // 
-            this.Render_Button.Location = new System.Drawing.Point(578, 5);
+            this.Render_Button.Location = new System.Drawing.Point(578, 34);
             this.Render_Button.Name = "Render_Button";
             this.Render_Button.Size = new System.Drawing.Size(114, 23);
             this.Render_Button.TabIndex = 0;
@@ -72,7 +80,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 6);
+            this.label1.Location = new System.Drawing.Point(12, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 4;
@@ -82,7 +90,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(227, 8);
+            this.label3.Location = new System.Drawing.Point(227, 37);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 6;
@@ -94,6 +102,7 @@
             // Menu
             // 
             this.Menu.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Menu.Controls.Add(this.toolStrip1);
             this.Menu.Controls.Add(this.button2);
             this.Menu.Controls.Add(this.button1);
             this.Menu.Controls.Add(this.Custom_Mandelbrot);
@@ -114,12 +123,12 @@
             this.Menu.Dock = System.Windows.Forms.DockStyle.Top;
             this.Menu.Location = new System.Drawing.Point(0, 0);
             this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(704, 65);
+            this.Menu.Size = new System.Drawing.Size(704, 92);
             this.Menu.TabIndex = 8;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(578, 30);
+            this.button2.Location = new System.Drawing.Point(578, 59);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(114, 23);
             this.button2.TabIndex = 25;
@@ -129,7 +138,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(440, 30);
+            this.button1.Location = new System.Drawing.Point(440, 59);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 23);
             this.button1.TabIndex = 24;
@@ -139,7 +148,7 @@
             // 
             // Custom_Mandelbrot
             // 
-            this.Custom_Mandelbrot.Location = new System.Drawing.Point(318, 30);
+            this.Custom_Mandelbrot.Location = new System.Drawing.Point(318, 59);
             this.Custom_Mandelbrot.Name = "Custom_Mandelbrot";
             this.Custom_Mandelbrot.Size = new System.Drawing.Size(73, 23);
             this.Custom_Mandelbrot.TabIndex = 23;
@@ -150,7 +159,7 @@
             // 
             // Custom_Back
             // 
-            this.Custom_Back.Location = new System.Drawing.Point(230, 30);
+            this.Custom_Back.Location = new System.Drawing.Point(230, 59);
             this.Custom_Back.Name = "Custom_Back";
             this.Custom_Back.Size = new System.Drawing.Size(82, 23);
             this.Custom_Back.TabIndex = 22;
@@ -164,7 +173,7 @@
             this.Color_Box.AutoSize = true;
             this.Color_Box.Checked = true;
             this.Color_Box.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Color_Box.Location = new System.Drawing.Point(347, 9);
+            this.Color_Box.Location = new System.Drawing.Point(347, 38);
             this.Color_Box.Name = "Color_Box";
             this.Color_Box.Size = new System.Drawing.Size(87, 17);
             this.Color_Box.TabIndex = 21;
@@ -174,7 +183,7 @@
             // 
             // Set_To_Default
             // 
-            this.Set_To_Default.Location = new System.Drawing.Point(440, 5);
+            this.Set_To_Default.Location = new System.Drawing.Point(440, 34);
             this.Set_To_Default.Name = "Set_To_Default";
             this.Set_To_Default.Size = new System.Drawing.Size(132, 23);
             this.Set_To_Default.TabIndex = 20;
@@ -190,7 +199,7 @@
             0,
             0,
             131072});
-            this.MinR.Location = new System.Drawing.Point(153, 30);
+            this.MinR.Location = new System.Drawing.Point(153, 59);
             this.MinR.Maximum = new decimal(new int[] {
             1,
             0,
@@ -220,7 +229,7 @@
             0,
             0,
             131072});
-            this.MaxR.Location = new System.Drawing.Point(153, 4);
+            this.MaxR.Location = new System.Drawing.Point(153, 33);
             this.MaxR.Maximum = new decimal(new int[] {
             1,
             0,
@@ -248,7 +257,7 @@
             0,
             0,
             131072});
-            this.MinI.Location = new System.Drawing.Point(48, 30);
+            this.MinI.Location = new System.Drawing.Point(48, 59);
             this.MinI.Maximum = new decimal(new int[] {
             1,
             0,
@@ -276,7 +285,7 @@
             0,
             0,
             0});
-            this.Iterations.Location = new System.Drawing.Point(283, 6);
+            this.Iterations.Location = new System.Drawing.Point(283, 35);
             this.Iterations.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -308,7 +317,7 @@
             0,
             0,
             131072});
-            this.MaxI.Location = new System.Drawing.Point(48, 3);
+            this.MaxI.Location = new System.Drawing.Point(48, 32);
             this.MaxI.Maximum = new decimal(new int[] {
             1,
             0,
@@ -331,7 +340,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(112, 32);
+            this.label2.Location = new System.Drawing.Point(112, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 12;
@@ -340,7 +349,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(112, 6);
+            this.label5.Location = new System.Drawing.Point(112, 35);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 10;
@@ -350,7 +359,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 32);
+            this.label4.Location = new System.Drawing.Point(12, 61);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(27, 13);
             this.label4.TabIndex = 8;
@@ -359,9 +368,9 @@
             // Renderer
             // 
             this.Renderer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Renderer.Location = new System.Drawing.Point(0, 65);
+            this.Renderer.Location = new System.Drawing.Point(0, 92);
             this.Renderer.Name = "Renderer";
-            this.Renderer.Size = new System.Drawing.Size(704, 376);
+            this.Renderer.Size = new System.Drawing.Size(704, 369);
             this.Renderer.TabIndex = 9;
             // 
             // ToolTip1
@@ -372,11 +381,62 @@
             // 
             this.BackgroundColor_Dialog.Color = System.Drawing.Color.Transparent;
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Toolstrip_File});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(704, 25);
+            this.toolStrip1.TabIndex = 26;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // Toolstrip_File
+            // 
+            this.Toolstrip_File.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.Toolstrip_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem,
+            this.loadToolStripMenuItem});
+            this.Toolstrip_File.Image = ((System.Drawing.Image)(resources.GetObject("Toolstrip_File.Image")));
+            this.Toolstrip_File.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Toolstrip_File.Name = "Toolstrip_File";
+            this.Toolstrip_File.Size = new System.Drawing.Size(38, 22);
+            this.Toolstrip_File.Text = "File";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveParametersToolStripMenuItem,
+            this.exportToolStripMenuItem});
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadToolStripMenuItem.Text = "Load";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            // 
+            // saveParametersToolStripMenuItem
+            // 
+            this.saveParametersToolStripMenuItem.Name = "saveParametersToolStripMenuItem";
+            this.saveParametersToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.saveParametersToolStripMenuItem.Text = "Save parameters";
+            this.saveParametersToolStripMenuItem.Click += new System.EventHandler(this.saveParametersToolStripMenuItem_Click);
+            // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.exportToolStripMenuItem.Text = "Export*";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 441);
+            this.ClientSize = new System.Drawing.Size(704, 461);
             this.Controls.Add(this.Renderer);
             this.Controls.Add(this.Menu);
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
@@ -391,6 +451,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.MinI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Iterations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxI)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -419,6 +481,12 @@
         private System.Windows.Forms.ColorDialog BackgroundColor_Dialog;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripDropDownButton Toolstrip_File;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveParametersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
     }
 }
 
