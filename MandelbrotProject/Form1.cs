@@ -38,7 +38,7 @@ namespace MandelbrotProject
             decimal zr = 0, zi = 0;
 
             //if the radius of the complex number is greater than 2 the number escapes
-            //returns the number of iterations it takes for the pixel to escape withing a range of maxN
+            //returns the number of iterations it takes for the pixel to escape within a range of maxN
             while (i < maxN && zr * zr + zi * zi < 4)
             {
                 decimal temp = zr * zr - zi * zi + cr;
@@ -180,39 +180,41 @@ namespace MandelbrotProject
                    
         private void saveParametersToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //opens the save file dialog
             SaveFileDialog SaveSettings = new SaveFileDialog();
+            //settings for the open file dialog
             SaveSettings.Filter = "Text File|*.txt";
             SaveSettings.FileName = "Profile";
             SaveSettings.Title = "Save current settings";
             if (SaveSettings.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                //saves the settings to the chosen filepath
                 string filePath = SaveSettings.FileName;
-                TextWriter bw = File.CreateText(filePath);
-                bw.WriteLine(Iterations.Value);
-                bw.WriteLine(MaxI.Value);
-                bw.WriteLine(MinI.Value);
-                bw.WriteLine(MaxR.Value);
-                bw.WriteLine(MinR.Value);
-
-                bw.Flush();
-                bw.Close();
+                TextWriter tw = File.CreateText(filePath);
+                tw.WriteLine(Iterations.Value);
+                tw.WriteLine(MaxI.Value);
+                tw.WriteLine(MinI.Value);
+                tw.WriteLine(MaxR.Value);
+                tw.WriteLine(MinR.Value);
+                //Closes the textwriter
+                tw.Flush();
+                tw.Close();
             }
 
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //opens the open file dialog
             OpenFileDialog LoadSettings = new OpenFileDialog();
-
+            //Settings for open file dialog
             LoadSettings.Filter = "Text file|*.txt";
             LoadSettings.Title = "Load settings";
             if (LoadSettings.ShowDialog() == DialogResult.OK)
 
             {
-
+                //reads the settings file
                 var settingsFile = LoadSettings.FileName;
-                //StreamReader sr = new StreamReader(settingsFile);
-
 
                 string iterVal = File.ReadLines(settingsFile).Take(1).First();
                 Iterations.Value = decimal.Parse(iterVal);
@@ -269,6 +271,13 @@ namespace MandelbrotProject
         private void Renderer_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            Form2 export1 = new Form2();
+            export1.Show();
         }
     }
 }
