@@ -13,36 +13,36 @@ namespace MandelbrotProject
 {
     public partial class Form1 : Form
     {
-        double fitInRRange(int x, int width, double minR, double maxR)
+        decimal fitInRRange(int x, int width, decimal minR, decimal maxR)
         {
             //fits the X value within the max and min for the plot
-            double range = maxR - minR;
+            decimal range = maxR - minR;
 
             return x * (range / width) + minR;
         }
 
-        double fitInIRange(int y, int width, double minI, double maxI)
+        decimal fitInIRange(int y, int width, decimal minI, decimal maxI)
         {
             //fits the Y value within the max and min for the plot
-            double range = maxI - minI;
+            decimal range = (maxI - minI);
 
             return y * (range / width) + minI; ;
         }
 
-        int findMandelbrot(double cr, double ci, int maxN)
+        int findMandelbrot(decimal cr, decimal ci, int maxN)
         {
             //calculates Zn+1 = Z^2 + c
             //where c is the current pixel the form x + y*i
 
             int i = 0;
-            double zr = 0, zi = 0;
+            decimal zr = 0, zi = 0;
 
             //if the radius of the complex number is greater than 2 the number escapes
             //returns the number of iterations it takes for the pixel to escape withing a range of maxN
-            while (i < maxN && zr * zr + zi * zi < 4.0)
+            while (i < maxN && zr * zr + zi * zi < 4)
             {
-                double temp = zr * zr - zi * zi + cr;
-                zi = 2.0 * zr * zi + ci;
+                decimal temp = zr * zr - zi * zi + cr;
+                zi = 2 * zr * zi + ci;
                 zr = temp;
 
                 i++;
@@ -62,10 +62,10 @@ namespace MandelbrotProject
             //Renderer.CreateGraphics().Clear(System.Drawing.Color.White);
 
             //minimum x and y values in the complex number of form x+y*i
-            double minR = System.Convert.ToDouble(MinR.Value);
-            double maxR = System.Convert.ToDouble(MaxR.Value);
-            double minI = System.Convert.ToDouble(MaxI.Value);
-            double maxI = System.Convert.ToDouble(MinI.Value);
+            decimal minR = MinR.Value;
+            decimal maxR = MaxR.Value;
+            decimal minI = MaxI.Value;
+            decimal maxI = MinI.Value;
 
             //maximum iterations before it determines if the number is inside or outside a radius of 2
             // see http://arachnoid.com/mandelbrot_set/resources/orbit_0.3520x0.3520.png
@@ -76,7 +76,7 @@ namespace MandelbrotProject
 
             //moving Renderer.CreateGraphics() outside the for loops
             using (var graphics = Renderer.CreateGraphics())
-            { 
+            {
                 //runs on every pixel in the Renderer
                 for (int y = 0; y < Renderer.Height; y++)
                 {
@@ -84,16 +84,16 @@ namespace MandelbrotProject
                     {
 
                         //fits the x and y value within the minR/I and MaxR/I Value
-                        double cr = fitInRRange(x, Renderer.Width, minR, maxR);
-                        double ci = fitInIRange(y, Renderer.Height, minI, maxI);
+                        decimal cr = fitInRRange(x, Renderer.Width, minR, maxR);
+                        decimal ci = fitInIRange(y, Renderer.Height, minI, maxI);
 
                         //Figures out how many iterations the complex number x+y*i takes before it becomes bigger than 2
                         int n = findMandelbrot(cr, ci, maxN);
-                        
+
 
                         //A value usen in color function, figures out where the N value lies withing a range of 0 and the maxN value
-                        double t = ((n + 0.0) / (maxN + 0.0));
-                        
+                        double t = ((n + 0.0)/(maxN + 0.0));
+
                         //if the color box is checked it runs an function to calculate the color of the pixel, 
                         //else it renders only the non-escaping part black and everything else white.
                         if (Color_Box.Checked == true) MandelColor.Color = System.Drawing.Color.FromArgb(System.Convert.ToInt32(9 * (1 - t) * t * t * t * 255), System.Convert.ToInt32(15 * (1 - t) * (1 - t) * t * t * 255), System.Convert.ToInt32(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255));
@@ -177,66 +177,7 @@ namespace MandelbrotProject
             //Shoes color dialog box for the color of the mandelbrot
             MandelColor_Dialog.ShowDialog();
         }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-           
-            SaveFileDialog SaveSettings = new SaveFileDialog();
-            SaveSettings.Filter = "Text File|*.txt";
-            SaveSettings.FileName = "Profile";
-            SaveSettings.Title = "Save current settings";
-            if (SaveSettings.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                string filePath = SaveSettings.FileName;
-                TextWriter bw = File.CreateText(filePath);
-                bw.WriteLine(Iterations.Value);
-                bw.WriteLine(MaxI.Value);
-                bw.WriteLine(MinI.Value);
-                bw.WriteLine(MaxR.Value);
-                bw.WriteLine(MinR.Value);
-
-                bw.Flush();
-                bw.Close();
-            }
-           
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            OpenFileDialog LoadSettings = new OpenFileDialog();
-            
-            LoadSettings.Filter = "Text file|*.txt";
-            LoadSettings.Title = "Load settings";
-            if (LoadSettings.ShowDialog() == DialogResult.OK)
-
-            {
-                
-                var settingsFile = LoadSettings.FileName;
-                //StreamReader sr = new StreamReader(settingsFile);
-
-
-                string iterVal = File.ReadLines(settingsFile).Take(1).First();
-                Iterations.Value = decimal.Parse(iterVal);
-
-                string maxiVal = File.ReadLines(settingsFile).Skip(1).Take(1).First();
-                MaxI.Value = decimal.Parse(maxiVal);
-
-                string miniVal = File.ReadLines(settingsFile).Skip(2).Take(1).First();
-                MinI.Value = decimal.Parse(miniVal);
-
-                string maxrVal = File.ReadLines(settingsFile).Skip(3).Take(1).First();
-                MaxR.Value = decimal.Parse(maxrVal);
-
-                string minrVal = File.ReadLines(settingsFile).Skip(4).Take(1).First();
-                MinR.Value = decimal.Parse(minrVal);
-
-                button1_Click(sender, e);
-
-
-            }
-
-        }
-
+                   
         private void saveParametersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog SaveSettings = new SaveFileDialog();
@@ -292,4 +233,42 @@ namespace MandelbrotProject
 
             }
         }
+
+        private void Renderer_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            //the point in the renderer
+            Point p = Renderer.PointToClient(Cursor.Position);
+            
+            //values for mouse position
+            int TestX = p.X;
+            int TestY = p.Y;
+
+            //Creating temporary values for min and max I and R
+            decimal minR_temp = MinR.Value;
+            decimal maxR_temp = MaxR.Value;
+            decimal minI_temp = MinI.Value;
+            decimal maxI_temp = MaxI.Value;
+
+            //Level of zoom, here 2 means dividing width and height by 2.
+            //bigger number = less zoom
+            int zoom = 2;
+
+            //finding the width and height of the parameters
+            decimal RRange = System.Convert.ToDecimal(MaxR.Value - MinR.Value);
+            decimal IRange = System.Convert.ToDecimal(MaxI.Value - MinI.Value);
+
+            //calculating zoom based on old parameters and mouse position
+            MaxR.Value = System.Convert.ToDecimal(fitInRRange(TestX, Renderer.Width, minR_temp, maxR_temp)) + ((RRange / zoom) / 2);
+            MinR.Value = System.Convert.ToDecimal(fitInRRange(TestX, Renderer.Width, minR_temp, maxR_temp)) - ((RRange / zoom) / 2);
+            MaxI.Value = System.Convert.ToDecimal(fitInIRange(TestY, Renderer.Height, minI_temp, maxI_temp)) - ((IRange / zoom) / 2);
+            MinI.Value = System.Convert.ToDecimal(fitInIRange(TestY, Renderer.Height, minI_temp, maxI_temp)) + ((IRange / zoom) / 2);
+
+            button1_Click(sender, e);
+        }
+
+        private void Renderer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+    }
 }

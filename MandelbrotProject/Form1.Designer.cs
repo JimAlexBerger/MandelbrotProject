@@ -34,8 +34,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.Menu = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.Toolstrip_File = new System.Windows.Forms.ToolStripDropDownButton();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveParametersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Custom_Mandelbrot = new System.Windows.Forms.Button();
             this.Custom_Back = new System.Windows.Forms.Button();
             this.Color_Box = new System.Windows.Forms.CheckBox();
@@ -52,24 +56,18 @@
             this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.MandelColor_Dialog = new System.Windows.Forms.ColorDialog();
             this.BackgroundColor_Dialog = new System.Windows.Forms.ColorDialog();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.Toolstrip_File = new System.Windows.Forms.ToolStripDropDownButton();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveParametersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MinR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Iterations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxI)).BeginInit();
-            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Render_Button
             // 
-            this.Render_Button.Location = new System.Drawing.Point(578, 34);
+            this.Render_Button.Location = new System.Drawing.Point(578, 38);
             this.Render_Button.Name = "Render_Button";
             this.Render_Button.Size = new System.Drawing.Size(114, 23);
             this.Render_Button.TabIndex = 0;
@@ -103,8 +101,6 @@
             // 
             this.Menu.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Menu.Controls.Add(this.toolStrip1);
-            this.Menu.Controls.Add(this.button2);
-            this.Menu.Controls.Add(this.button1);
             this.Menu.Controls.Add(this.Custom_Mandelbrot);
             this.Menu.Controls.Add(this.Custom_Back);
             this.Menu.Controls.Add(this.Color_Box);
@@ -126,25 +122,56 @@
             this.Menu.Size = new System.Drawing.Size(704, 92);
             this.Menu.TabIndex = 8;
             // 
-            // button2
+            // toolStrip1
             // 
-            this.button2.Location = new System.Drawing.Point(578, 59);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(114, 23);
-            this.button2.TabIndex = 25;
-            this.button2.Text = "Load settings";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Toolstrip_File});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(704, 25);
+            this.toolStrip1.TabIndex = 26;
+            this.toolStrip1.Text = "toolStrip1";
             // 
-            // button1
+            // Toolstrip_File
             // 
-            this.button1.Location = new System.Drawing.Point(440, 59);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 23);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Save settings";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.Toolstrip_File.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.Toolstrip_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem,
+            this.loadToolStripMenuItem});
+            this.Toolstrip_File.Image = ((System.Drawing.Image)(resources.GetObject("Toolstrip_File.Image")));
+            this.Toolstrip_File.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Toolstrip_File.Name = "Toolstrip_File";
+            this.Toolstrip_File.Size = new System.Drawing.Size(38, 22);
+            this.Toolstrip_File.Text = "File";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveParametersToolStripMenuItem,
+            this.exportToolStripMenuItem});
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            // 
+            // saveParametersToolStripMenuItem
+            // 
+            this.saveParametersToolStripMenuItem.Name = "saveParametersToolStripMenuItem";
+            this.saveParametersToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.saveParametersToolStripMenuItem.Text = "Save parameters";
+            this.saveParametersToolStripMenuItem.Click += new System.EventHandler(this.saveParametersToolStripMenuItem_Click);
+            // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.exportToolStripMenuItem.Text = "Export*";
+            // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.loadToolStripMenuItem.Text = "Load";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // Custom_Mandelbrot
             // 
@@ -183,7 +210,7 @@
             // 
             // Set_To_Default
             // 
-            this.Set_To_Default.Location = new System.Drawing.Point(440, 34);
+            this.Set_To_Default.Location = new System.Drawing.Point(440, 38);
             this.Set_To_Default.Name = "Set_To_Default";
             this.Set_To_Default.Size = new System.Drawing.Size(132, 23);
             this.Set_To_Default.TabIndex = 20;
@@ -193,7 +220,7 @@
             // 
             // MinR
             // 
-            this.MinR.DecimalPlaces = 12;
+            this.MinR.DecimalPlaces = 99;
             this.MinR.Increment = new decimal(new int[] {
             25,
             0,
@@ -201,12 +228,12 @@
             131072});
             this.MinR.Location = new System.Drawing.Point(153, 59);
             this.MinR.Maximum = new decimal(new int[] {
-            1,
+            2,
             0,
             0,
             0});
             this.MinR.Minimum = new decimal(new int[] {
-            25,
+            35,
             0,
             0,
             -2147418112});
@@ -223,7 +250,7 @@
             // 
             // MaxR
             // 
-            this.MaxR.DecimalPlaces = 12;
+            this.MaxR.DecimalPlaces = 99;
             this.MaxR.Increment = new decimal(new int[] {
             25,
             0,
@@ -231,12 +258,12 @@
             131072});
             this.MaxR.Location = new System.Drawing.Point(153, 33);
             this.MaxR.Maximum = new decimal(new int[] {
-            1,
+            2,
             0,
             0,
             0});
             this.MaxR.Minimum = new decimal(new int[] {
-            25,
+            35,
             0,
             0,
             -2147418112});
@@ -251,7 +278,7 @@
             // 
             // MinI
             // 
-            this.MinI.DecimalPlaces = 12;
+            this.MinI.DecimalPlaces = 99;
             this.MinI.Increment = new decimal(new int[] {
             25,
             0,
@@ -259,15 +286,15 @@
             131072});
             this.MinI.Location = new System.Drawing.Point(48, 59);
             this.MinI.Maximum = new decimal(new int[] {
-            1,
+            15,
             0,
             0,
-            0});
+            65536});
             this.MinI.Minimum = new decimal(new int[] {
-            1,
+            15,
             0,
             0,
-            -2147483648});
+            -2147418112});
             this.MinI.Name = "MinI";
             this.MinI.Size = new System.Drawing.Size(58, 20);
             this.MinI.TabIndex = 17;
@@ -311,7 +338,7 @@
             // 
             // MaxI
             // 
-            this.MaxI.DecimalPlaces = 12;
+            this.MaxI.DecimalPlaces = 99;
             this.MaxI.Increment = new decimal(new int[] {
             25,
             0,
@@ -319,15 +346,15 @@
             131072});
             this.MaxI.Location = new System.Drawing.Point(48, 32);
             this.MaxI.Maximum = new decimal(new int[] {
-            1,
+            15,
             0,
             0,
-            0});
+            65536});
             this.MaxI.Minimum = new decimal(new int[] {
-            1,
+            15,
             0,
             0,
-            -2147483648});
+            -2147418112});
             this.MaxI.Name = "MaxI";
             this.MaxI.Size = new System.Drawing.Size(58, 20);
             this.MaxI.TabIndex = 0;
@@ -372,6 +399,8 @@
             this.Renderer.Name = "Renderer";
             this.Renderer.Size = new System.Drawing.Size(704, 369);
             this.Renderer.TabIndex = 9;
+            this.Renderer.Paint += new System.Windows.Forms.PaintEventHandler(this.Renderer_Paint);
+            this.Renderer.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Renderer_MouseDoubleClick);
             // 
             // ToolTip1
             // 
@@ -380,57 +409,6 @@
             // BackgroundColor_Dialog
             // 
             this.BackgroundColor_Dialog.Color = System.Drawing.Color.Transparent;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Toolstrip_File});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(704, 25);
-            this.toolStrip1.TabIndex = 26;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // Toolstrip_File
-            // 
-            this.Toolstrip_File.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.Toolstrip_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveToolStripMenuItem,
-            this.loadToolStripMenuItem});
-            this.Toolstrip_File.Image = ((System.Drawing.Image)(resources.GetObject("Toolstrip_File.Image")));
-            this.Toolstrip_File.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Toolstrip_File.Name = "Toolstrip_File";
-            this.Toolstrip_File.Size = new System.Drawing.Size(38, 22);
-            this.Toolstrip_File.Text = "File";
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveParametersToolStripMenuItem,
-            this.exportToolStripMenuItem});
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveToolStripMenuItem.Text = "Save";
-            // 
-            // loadToolStripMenuItem
-            // 
-            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.loadToolStripMenuItem.Text = "Load";
-            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
-            // 
-            // saveParametersToolStripMenuItem
-            // 
-            this.saveParametersToolStripMenuItem.Name = "saveParametersToolStripMenuItem";
-            this.saveParametersToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.saveParametersToolStripMenuItem.Text = "Save parameters";
-            this.saveParametersToolStripMenuItem.Click += new System.EventHandler(this.saveParametersToolStripMenuItem_Click);
-            // 
-            // exportToolStripMenuItem
-            // 
-            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.exportToolStripMenuItem.Text = "Export*";
             // 
             // Form1
             // 
@@ -446,13 +424,13 @@
             this.Text = "Mandelbrot Renderer";
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MinR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Iterations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxI)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -479,8 +457,6 @@
         private System.Windows.Forms.Button Custom_Back;
         private System.Windows.Forms.ColorDialog MandelColor_Dialog;
         private System.Windows.Forms.ColorDialog BackgroundColor_Dialog;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton Toolstrip_File;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
