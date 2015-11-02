@@ -12,7 +12,7 @@ namespace MandelbrotProject
 { 
     public partial class Form2 : Form
     {
-        
+
         public Form2()
         {
             InitializeComponent();
@@ -51,14 +51,19 @@ namespace MandelbrotProject
 
             Bitmap bmp = new Bitmap(width, height);
 
-            /* for (int y = 0; y < height; y++)
+             for (int y = 0; y < height; y++)
              {
                  for (int x = 0; x < width; x++)
                  {
-                     bmp.SetPixel(x, y, Color.Black);
+                    Color clr = new Color();
+
+                    clr = Color.FromArgb(255, 255, 255);
+
+              
+                    bmp.SetPixel(x, y, clr);
                  }
              }
-             */
+             
 
             
 
