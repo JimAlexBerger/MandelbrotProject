@@ -52,7 +52,7 @@ namespace MandelbrotProject
 
             Bitmap bmp = new Bitmap(width, height);
 
-           
+           //here goes the rendering :^)
          
 
 
