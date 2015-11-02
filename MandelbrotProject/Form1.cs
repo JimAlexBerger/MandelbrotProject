@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace MandelbrotProject
 {
@@ -83,25 +78,7 @@ namespace MandelbrotProject
                     for (int x = 0; x < Renderer.Width; x++)
                     {
 
-                        //fits the x and y value within the minR/I and MaxR/I Value
-                        decimal cr = fitInRRange(x, Renderer.Width, minR, maxR);
-                        decimal ci = fitInIRange(y, Renderer.Height, minI, maxI);
-
-                        //Figures out how many iterations the complex number x+y*i takes before it becomes bigger than 2
-                        int n = findMandelbrot(cr, ci, maxN);
-
-
-                        //A value usen in color function, figures out where the N value lies withing a range of 0 and the maxN value
-                        double t = ((n + 0.0)/(maxN + 0.0));
-
-                        //if the color box is checked it runs an function to calculate the color of the pixel, 
-                        //else it renders only the non-escaping part black and everything else white.
-                        if (Color_Box.Checked == true) MandelColor.Color = System.Drawing.Color.FromArgb(System.Convert.ToInt32(9 * (1 - t) * t * t * t * 255), System.Convert.ToInt32(15 * (1 - t) * (1 - t) * t * t * 255), System.Convert.ToInt32(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255));
-                        else if (n == maxN) MandelColor.Color = MandelColor_Dialog.Color;
-                        else MandelColor.Color = BackgroundColor_Dialog.Color;
-
-                        //Rendering the color at the exact pixel the for loop is on
-                        graphics.FillRectangle(MandelColor, x, y, 1, 1);
+                         
 
 
                     }
@@ -278,6 +255,7 @@ namespace MandelbrotProject
             
             Form2 export1 = new Form2();
             export1.Show();
+            
         }
     }
 }

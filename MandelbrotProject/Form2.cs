@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,21 +52,49 @@ namespace MandelbrotProject
 
             Bitmap bmp = new Bitmap(width, height);
 
-            /* for (int y = 0; y < height; y++)
-             {
-                 for (int x = 0; x < width; x++)
-                 {
-                     bmp.SetPixel(x, y, Color.Black);
-                 }
-             }
-             */
-
-            
-
+           
+         
 
 
             bmp.Save(textBox1.Text);
             
          }
+
+        public void MaxI_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //opens the open file dialog
+            OpenFileDialog LoadSettings = new OpenFileDialog();
+            //Settings for open file dialog
+            LoadSettings.Filter = "Text file|*.txt";
+            LoadSettings.Title = "Load settings";
+            if (LoadSettings.ShowDialog() == DialogResult.OK)
+
+            {
+                //reads the settings file
+                var settingsFile = LoadSettings.FileName;
+
+                string iterVal = File.ReadLines(settingsFile).Take(1).First();
+                decimal Iterations = decimal.Parse(iterVal);
+
+                string maxiVal = File.ReadLines(settingsFile).Skip(1).Take(1).First();
+                decimal MaxI = decimal.Parse(maxiVal);
+
+                string miniVal = File.ReadLines(settingsFile).Skip(2).Take(1).First();
+                decimal MinI = decimal.Parse(miniVal);
+
+                string maxrVal = File.ReadLines(settingsFile).Skip(3).Take(1).First();
+                decimal MaxR = decimal.Parse(maxrVal);
+
+                string minrVal = File.ReadLines(settingsFile).Skip(4).Take(1).First();
+                decimal MinR = decimal.Parse(minrVal);
+
+                textBox2.Text = LoadSettings.FileName;
+            }
+        }
     }
 }            
