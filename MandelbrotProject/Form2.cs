@@ -119,6 +119,8 @@ namespace MandelbrotProject
             {
                 for (int x = 0; x < widthVal.Value; x++)
                 {
+                    int y_Pos = (int)heightVal.Value - y;
+
                     decimal cr = fitInRRange(x, (int)widthVal.Value, minR, maxR);
                     decimal ci = fitInIRange(y, (int)heightVal.Value, minI, maxI);
 
@@ -132,7 +134,7 @@ namespace MandelbrotProject
                     clr = Color.FromArgb(System.Convert.ToInt32(9 * (1 - t) * t * t * t * 255), System.Convert.ToInt32(15 * (1 - t) * (1 - t) * t * t * 255), System.Convert.ToInt32(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255));
 
                     //Rendering the color at the exact pixel the for loop is on
-                    bmp.SetPixel(x,y,clr);
+                    bmp.SetPixel(x,y_Pos,clr);
 
                     
                 }
