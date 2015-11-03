@@ -59,8 +59,8 @@ namespace MandelbrotProject
             //minimum x and y values in the complex number of form x+y*i
             decimal minR = MinR.Value;
             decimal maxR = MaxR.Value;
-            decimal minI = MaxI.Value;
-            decimal maxI = MinI.Value;
+            decimal minI = MinI.Value;
+            decimal maxI = MaxI.Value;
 
             //maximum iterations before it determines if the number is inside or outside a radius of 2
             // see http://arachnoid.com/mandelbrot_set/resources/orbit_0.3520x0.3520.png
@@ -77,6 +77,9 @@ namespace MandelbrotProject
                 {
                     for (int x = 0; x < Renderer.Width; x++)
                     {
+                        //rendering from the bottom and up
+                        int y_Pos = Renderer.Height - y; 
+
                         decimal cr = fitInRRange(x, Renderer.Width, minR, maxR);
                         decimal ci = fitInIRange(y, Renderer.Height, minI, maxI);
 
@@ -95,7 +98,7 @@ namespace MandelbrotProject
                         else MandelColor.Color = BackgroundColor_Dialog.Color;
 
                         //Rendering the color at the exact pixel the for loop is on
-                        graphics.FillRectangle(MandelColor, x, y, 1, 1);
+                        graphics.FillRectangle(MandelColor, x, y_Pos, 1, 1);
                     }
                 }
             }
