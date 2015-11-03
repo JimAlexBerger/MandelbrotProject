@@ -39,6 +39,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.progress_Mandelbrot = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.heightVal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.widthVal)).BeginInit();
             this.SuspendLayout();
@@ -54,6 +55,11 @@
             this.heightVal.Name = "heightVal";
             this.heightVal.Size = new System.Drawing.Size(69, 20);
             this.heightVal.TabIndex = 0;
+            this.heightVal.Value = new decimal(new int[] {
+            1080,
+            0,
+            0,
+            0});
             // 
             // widthValue
             // 
@@ -76,6 +82,11 @@
             this.widthVal.Name = "widthVal";
             this.widthVal.Size = new System.Drawing.Size(72, 20);
             this.widthVal.TabIndex = 2;
+            this.widthVal.Value = new decimal(new int[] {
+            1920,
+            0,
+            0,
+            0});
             // 
             // heightValue
             // 
@@ -149,11 +160,19 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Image filepath";
             // 
+            // progress_Mandelbrot
+            // 
+            this.progress_Mandelbrot.Location = new System.Drawing.Point(166, 25);
+            this.progress_Mandelbrot.Name = "progress_Mandelbrot";
+            this.progress_Mandelbrot.Size = new System.Drawing.Size(173, 19);
+            this.progress_Mandelbrot.TabIndex = 11;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(351, 164);
+            this.Controls.Add(this.progress_Mandelbrot);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button3);
@@ -166,7 +185,8 @@
             this.Controls.Add(this.widthValue);
             this.Controls.Add(this.heightVal);
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.ShowIcon = false;
+            this.Text = "Export";
             ((System.ComponentModel.ISupportInitialize)(this.heightVal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.widthVal)).EndInit();
             this.ResumeLayout(false);
@@ -187,5 +207,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ProgressBar progress_Mandelbrot;
     }
 }
